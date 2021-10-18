@@ -38,9 +38,15 @@ extern const ADC_ConfigType g_LM35_ADC_Config;
 
 /*
  * Description :
- * Function responsible for calculate the temperature from the ADC digital value.
+ * Function responsible for preparing the required hardware specificlly ADC
+ * feeding it with g_LM35_ADC_Config
  */
 void LM35_init(void);
+
+/*
+ * Description :
+ * Function responsible for calculate the temperature from the ADC digital value.
+ */
 uint8 LM35_getTemperature(void);
 
 #endif /* LM35_SENSOR_H_ */

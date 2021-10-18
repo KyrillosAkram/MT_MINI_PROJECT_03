@@ -19,7 +19,11 @@ const ADC_ConfigType g_LM35_ADC_Config={
 		ADC_FACTOR_8
 };
 
-
+/*
+ * Description :
+ * Function responsible for preparing the required hardware specificlly ADC
+ * feeding it with g_LM35_ADC_Config
+ */
 void LM35_init(void){
 	GPIO_setupPinDirection(SENSOR_PORT_ID,SENSOR_CHANNEL_ID,PIN_INPUT);
 	ADC_init(&g_LM35_ADC_Config);

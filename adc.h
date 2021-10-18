@@ -15,6 +15,10 @@
 
 #include "std_types.h"
 
+/****************************************************
+ *				Types deceleration					*
+ ****************************************************/
+
 typedef enum{
 	ADC_REF_AREF,
 	ADC_REF_AVCC,
@@ -44,6 +48,8 @@ typedef struct{
  ADC_ReferenceVolatge ref_volt;
  ADC_Prescaler prescaler;
 }ADC_ConfigType;
+
+/*--------------------------------------------------*/
 
 
 /*******************************************************************************
