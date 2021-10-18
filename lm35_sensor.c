@@ -12,7 +12,18 @@
 
 #include <util/delay.h> /* For the delay functions */
 #include "lm35_sensor.h"
-#include "adc.h"
+#include "gpio.h"
+
+const ADC_ConfigType g_LM35_ADC_Config={
+		ADC_REF_INTERNAL_2_56V,
+		ADC_FACTOR_8
+};
+
+
+void LM35_init(void){
+	GPIO_setupPinDirection(SENSOR_PORT_ID,SENSOR_CHANNEL_ID,PIN_INPUT);
+	ADC_init(&g_LM35_ADC_Config);
+}
 
 /*
  * Description :
