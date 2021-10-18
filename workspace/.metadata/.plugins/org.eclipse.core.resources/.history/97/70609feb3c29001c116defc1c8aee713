@@ -1,0 +1,24 @@
+/*
+ * keypad.h
+ *
+ *		Module: KEYPAD
+ *
+ *  Created on: Oct 9, 2021
+ *
+ *      Author: Kyrillos
+ *
+ *		 Usage: to use this module should consider the following
+ * 		 		1- the gpio used should start from PIN0
+ * 		 		2- the row is lest significant the column
+ * 		 		3- confider the module header in config section
+ *
+ */
+
+#ifndef KEYPAD_H_
+#define KEYPAD_H_
+
+#include "gpio.h"
+
+
+
+#endif /* KEYPAD_H_ */

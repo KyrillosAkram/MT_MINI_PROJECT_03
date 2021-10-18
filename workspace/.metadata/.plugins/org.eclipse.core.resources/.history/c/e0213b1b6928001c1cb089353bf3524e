@@ -1,0 +1,31 @@
+/*
+ * std_types.h
+ *
+ * Description: type target abstraction for AVR8
+ *
+ *  Created on: Oct 8, 2021
+ *
+ *      Author: Kyrillos
+ */
+
+#ifndef STD_TYPES_H_
+#define STD_TYPES_H_
+
+typedef unsigned char bool;
+typedef unsigned char boolean;
+
+typedef char int8;
+typedef char sint8;
+typedef unsigned char uint8;
+typedef long char int16;
+typedef long char sint16;
+typedef unsigned long char uint16;
+typedef long long char int32;
+typedef long long char sint32;
+typedef unsigned long long char uint32;
+typedef long long long char int64;
+typedef long long long char sint64;
+typedef unsigned long long long char uint64;
+
+
+#endif /* STD_TYPES_H_ */

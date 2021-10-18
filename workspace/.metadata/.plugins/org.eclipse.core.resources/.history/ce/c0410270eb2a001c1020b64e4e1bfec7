@@ -1,0 +1,38 @@
+/*
+ * keypad.c
+ *
+ *  Created on: Oct 9, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "keypad.h"
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif
+uint8 KEYPAD_getPressedKey(void){
+	for(uint8 col=0; col<KEYPAD_COL_NUM;col++){
+		/*for easy disconnect power on pins is to make them inputs*/
+		GPIO_setupFirstNPins((uint8)KEYPAD_PORT_ID,((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM)),PIN_INPUT);
+		GPIO_setupPinDirection((uint8)KEYPAD_PORT_ID,col,PIN_OUTPUT);
+/*TODO this part need testing*/
+		#if  ( KEYPAD_BUTTON_PRESSED == LOGIC_HIGH )
+		GPIO_writePort(KEYPAD_PORT_ID,((GPIO_readPort(KEYPAD_PORT_ID)&(0xFF&(~((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM))-1))))|(LOGIC_HIGH<<col));
+#else
+		GPIO_writePort(KEYPAD_PORT_ID,((GPIO_readPort(KEYPAD_PORT_ID)&(0xFF&(~((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM))-1))))&(~(LOGIC_HIGH<<col)));
+#endif
+	}
+}
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif

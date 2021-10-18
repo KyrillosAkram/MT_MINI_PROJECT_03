@@ -1,0 +1,14 @@
+/*
+ * lm35_sensor.h
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef LM35_SENSOR_H_
+#define LM35_SENSOR_H_
+
+#include "adc.h"
+
+
+#endif /* LM35_SENSOR_H_ */

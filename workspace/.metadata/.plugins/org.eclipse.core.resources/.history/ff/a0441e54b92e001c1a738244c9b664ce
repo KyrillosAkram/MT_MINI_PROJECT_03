@@ -1,0 +1,12 @@
+/*
+ * imp.h
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+#if x==0
+#warning x=0
+#elif x==9
+#warning x=9
+#endif

@@ -1,0 +1,21 @@
+/*
+ * adc.c
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "adc.h"
+
+void ADC_init(){
+	ADCSRA|=
+			(ADC_DEFAULT_PRESCALER)|
+			(1<<ADEN);
+}
+
+uint8 ADC_readChannel(ADC_ChannelType a_channel_num){
+	ADCSRA|=(1<<ADEN);		/*start reading proccess or conversion*/
+	while((ADCSRA>>ADEN));	/*waits until the conversion to be finished*/
+}
+

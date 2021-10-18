@@ -1,0 +1,87 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Oct 13, 2021
+ *      Author: Kyrillos
+ */
+
+#include "lcd.h"
+void LCD_init(){
+	GPIO_setupPinDirection(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(LCD_COMMAND_PORT_ID,LCD_PIN_RS_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(LCD_COMMAND_PORT_ID,LCD_PIN_RW_ID,PIN_OUTPUT);
+#if		LCD_4BITS_MODE
+	GPIO_setupPinDirection(LCD_DATA_PORT_ID,((LCD_DATA_FIRST_PIN_ID)+0),PIN_OUTPUT);
+	GPIO_setupPinDirection(LCD_DATA_PORT_ID,((LCD_DATA_FIRST_PIN_ID)+1),PIN_OUTPUT);
+	GPIO_setupPinDirection(LCD_DATA_PORT_ID,((LCD_DATA_FIRST_PIN_ID)+2),PIN_OUTPUT);
+	GPIO_setupPinDirection(LCD_DATA_PORT_ID,((LCD_DATA_FIRST_PIN_ID)+3),PIN_OUTPUT);
+#else
+	  /*LCD_8BITS_MODE*/
+	GPIO_setupPortDirection(LCD_DATA_PORT_ID,PORT_OUTPUT);
+#endif
+}
+
+void LCD_sendCommand(LCD_Command_t a_command){
+#if LCD_4BITS_MODE
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RS_ID,LOGIC_LOW);
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RW_ID,LOGIC_LOW);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_HIGH);
+	LCD_DELAY();
+	/*GPIO_writePort(LCD_DATA_PORT_ID,a_command);*/
+	GPIO_INSERT_SUCCESSIVE_BITS(LCD_DATA_OUTPUT,LCD_DATA_FIRST_PIN_ID,(4u),((a_command>>4)&(0x0f)));
+	LCD_DELAY();
+	GPIO_INSERT_SUCCESSIVE_BITS(LCD_DATA_OUTPUT,LCD_DATA_FIRST_PIN_ID,(4u),((a_command)&(0x0f)));
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_LOW);
+	LCD_DELAY();
+#elif LCD_8BITS_MODE
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RS_ID,LOGIC_LOW);
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RW_ID,LOGIC_LOW);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_HIGH);
+	LCD_DELAY();
+	GPIO_writePort(LCD_DATA_PORT_ID,a_command);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_LOW);
+	LCD_DELAY();
+#endif
+}
+
+void LCD_displayCharacter(char a_char){
+#if LCD_4BITS_MODE
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RS_ID,LOGIC_HIGH);
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RW_ID,LOGIC_LOW);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_HIGH);
+	LCD_DELAY();
+	/*GPIO_writePort(LCD_DATA_PORT_ID,a_command);*/
+	GPIO_INSERT_SUCCESSIVE_BITS(LCD_DATA_OUTPUT,LCD_DATA_FIRST_PIN_ID,(4u),((a_char>>4)&(0x0f)));
+	LCD_DELAY();
+	GPIO_INSERT_SUCCESSIVE_BITS(LCD_DATA_OUTPUT,LCD_DATA_FIRST_PIN_ID,(4u),((a_char)&(0x0f)));
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_LOW);
+	LCD_DELAY();
+#elif LCD_8BITS_MODE
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RS_ID,LOGIC_LOW);
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_RW_ID,LOGIC_LOW);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_HIGH);
+	LCD_DELAY();
+	GPIO_writePort(LCD_DATA_PORT_ID,a_char);
+	LCD_DELAY();
+	GPIO_writePin(LCD_COMMAND_PORT_ID,LCD_PIN_E_ID,LOGIC_LOW);
+	LCD_DELAY();
+#endif
+}
+
+void LCD_displayString(char* a_string){
+	uint8 a_counter=0;
+	while(a_string[a_counter]!='\0'){
+		LCD_displayCharacter(a_string[a_counter])
+	}
+}
+void LCD_moveCursorTo(LCD_Display_Position_t a_position);
+void LCD_displayStringRowColumn(char* a_string,LCD_Display_Position_t a_position);
+void LCD_clearScreen();
+void LCD_intgerToString(int8 a_intger,char* a_buffer_ptr);

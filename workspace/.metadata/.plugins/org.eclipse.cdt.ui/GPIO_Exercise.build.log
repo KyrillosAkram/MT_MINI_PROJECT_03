@@ -1,0 +1,7 @@
+14:08:46 **** Clean-only build of configuration Debug for project GPIO_Exercise ****
+make clean 
+rm -rf  ./GPIO_Exercise.o ./gpio.o  sizedummy  GPIO_Exercise.lss  ./GPIO_Exercise.d ./gpio.d  GPIO_Exercise.elf
+ 
+
+14:08:46 Build Finished. 0 errors, 0 warnings. (took 498ms)
+

@@ -1,0 +1,61 @@
+/*
+ * keypad.h
+ *
+ *		Module: KEYPAD
+ *
+ *  Created on: Oct 9, 2021
+ *
+ *      Author: Kyrillos
+ *
+ *		 Usage: To use this module should consider the following
+ * 		 		1- the gpio used should start from PIN0
+ * 		 		2- the row is lest significant the column
+ * 		 		3- confider the module header in config section
+ * 		 		4- gpio of keypad should lay on single port
+ *
+ *
+ */
+
+#ifndef KEYPAD_H_
+#define KEYPAD_H_
+
+#include "gpio.h"
+
+/****************************************************
+ *           			macros
+ ****************************************************/
+
+/*
+ * Description: this section should explicitly defined
+ */
+
+#define KEYPAD_PULL_UP TRUE
+#define KEYPAD_TIMEOUT FALSE /*feature to be added in future*/
+#define KEYPAD_TIMER FALSE /*feature to be added in future*/
+
+#define KEYPAD_COL_NUM UNDEFINED
+#define KEYPAD_ROW_NUM UNDEFINED
+
+#define KEYPAD_PORT_ID UNDEFINED
+#define KEYPAD_ROW_ID UNDEFINED
+#define KEYPAD_COL_ID UNDEFINED
+
+#define KEYPAD_BUTTON_PRESSED UNDEFINED
+#define KEYPAD_BUTTON_RELEASED UNDEFINED
+
+
+#if \
+	(KEYPAD_BUTTON_PRESSED  == UNDEFINED)||\
+	(KEYPAD_BUTTON_RELEASED == UNDEFINED)||\
+	(KEYPAD_COL_ID          == UNDEFINED)||\
+	(KEYPAD_COL_NUM         == UNDEFINED)||\
+	(KEYPAD_PORT_ID         == UNDEFINED)||\
+	(KEYPAD_ROW_ID          == UNDEFINED)||\
+	(KEYPAD_ROW_NUM         == UNDEFINED)||\
+	(KEYPAD_PULL_UP         == UNDEFINED)
+#error "a config macro in KEYPAD module is undefined"
+#endif
+
+
+uint8 KEYPAD_getPressedKey(void);
+#endif /* KEYPAD_H_ */

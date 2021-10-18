@@ -1,0 +1,13 @@
+/*
+ * adc.c
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "adc.h"
+
+void ADC_init();
+uint8 ADC_readChannel(ADC_ChannelType a_channel);
+

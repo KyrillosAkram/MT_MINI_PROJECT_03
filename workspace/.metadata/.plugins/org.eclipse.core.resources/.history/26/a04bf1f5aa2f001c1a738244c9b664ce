@@ -1,0 +1,19 @@
+/*
+ * dc_motor.h
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef DC_MOTOR_H_
+#define DC_MOTOR_H_
+
+#include "pwm.h"
+
+void DcMotor_Init(void);
+
+void DcMotor_Rotate(DcMotor_State state,uint8 speed);
+
+
+
+#endif /* DC_MOTOR_H_ */

@@ -1,0 +1,9 @@
+/*
+ * adc.c
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "adc.h"

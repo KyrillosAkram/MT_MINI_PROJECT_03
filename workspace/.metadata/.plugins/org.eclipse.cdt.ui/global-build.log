@@ -1,0 +1,41 @@
+21:46:14 **** Incremental Build of configuration Debug for project MiniProject3 ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:14:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../main.c
+ 
+Building target: MiniProject3.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,MiniProject3.map -mmcu=atmega16 -o "MiniProject3.elf"  ./adc.o ./dc_motor.o ./gpio.o ./lcd.o ./lm35_sensor.o ./main.o ./pwm.o   
+Finished building target: MiniProject3.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S MiniProject3.elf  >"MiniProject3.lss"
+Finished building: MiniProject3.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex MiniProject3.elf  "MiniProject3.hex"
+Finished building: MiniProject3.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex MiniProject3.elf  "MiniProject3.eep"
+Finished building: MiniProject3.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 MiniProject3.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    9906 bytes (60.5% Full)
+(.text + .data + .bootloader)
+
+Data:        331 bytes (32.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

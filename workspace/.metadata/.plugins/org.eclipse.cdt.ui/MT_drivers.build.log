@@ -1,0 +1,7 @@
+14:08:46 **** Clean-only build of configuration Debug for project MT_drivers ****
+make clean 
+rm -f  ./adc.o ./gpio.o ./icu.o ./keypad.o ./lcd.o ./lm35_sensor.o  sizedummy  libMT_drivers.lss  ./adc.d ./gpio.d ./icu.d ./keypad.d ./lcd.d ./lm35_sensor.d  libMT_drivers.a
+ 
+
+14:08:47 Build Finished. 0 errors, 0 warnings. (took 417ms)
+

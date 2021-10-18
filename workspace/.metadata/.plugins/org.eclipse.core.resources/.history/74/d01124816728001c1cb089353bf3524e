@@ -1,0 +1,16 @@
+/*
+ * std_types.h
+ *
+ * Description: type target abstraction
+ *
+ *  Created on: Oct 8, 2021
+ *
+ *      Author: Kyrillos
+ */
+
+#ifndef STD_TYPES_H_
+#define STD_TYPES_H_
+
+
+
+#endif /* STD_TYPES_H_ */

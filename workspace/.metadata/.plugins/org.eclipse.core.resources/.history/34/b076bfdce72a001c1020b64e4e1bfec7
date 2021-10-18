@@ -1,0 +1,35 @@
+/*
+ * keypad.c
+ *
+ *  Created on: Oct 9, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "keypad.h"
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif
+uint8 KEYPAD_getPressedKey(void){
+	for(uint8 col=0; col<KEYPAD_COL_NUM;col++){
+		/*for easy disconnect power on pins is to make them inputs*/
+		GPIO_setupFirstNPins((uint8)KEYPAD_PORT_ID,(uint8)(((uint8)KEYPAD_COL_NUM)+((uint8)KEYPAD_ROW_NUM)),(uint8)PIN_INPUT);
+		GPIO_setupPinDirection(KEYPAD_PORT_ID,col,PIN_OUTPUT);
+#if  ( KEYPAD_BUTTON_PRESSED == LOGIC_HIGH )
+		GPIO_writePort(KEYPAD_PORT_ID,);
+
+	}
+}
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif

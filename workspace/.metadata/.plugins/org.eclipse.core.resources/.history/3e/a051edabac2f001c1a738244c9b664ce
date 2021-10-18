@@ -1,0 +1,29 @@
+/*
+ * dc_motor.h
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef DC_MOTOR_H_
+#define DC_MOTOR_H_
+
+#include "pwm.h"
+#include "gpio.h"
+
+typedef enum{
+	 DC_MOTOR_CW,
+	 DC_MOTOR_A_CW,
+	 DC_MOTOR_STOP
+}DcMotor_State;
+
+#define DCMOTOR_PORT_ID PORTD_ID
+#define DCMOTOR_PIN_IN1
+PIN3;
+void DcMotor_Init(void);
+
+void DcMotor_Rotate(DcMotor_State state,uint8 speed);
+
+
+
+#endif /* DC_MOTOR_H_ */

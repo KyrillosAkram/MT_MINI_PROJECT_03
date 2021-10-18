@@ -1,0 +1,67 @@
+/*
+ * adc.h
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef ADC_H_
+#define ADC_H_
+
+#include "common_macros.h"
+#include "std_types.h"
+#include "gpio.h"
+/****************************************************
+ *				Types deceleration					*
+ ****************************************************/
+typedef enum{
+	ADC_SELECT_ADC0,
+	ADC_SELECT_ADC1,
+	ADC_SELECT_ADC2,
+	ADC_SELECT_ADC3,
+	ADC_SELECT_ADC4,
+	ADC_SELECT_ADC5,
+	ADC_SELECT_ADC6,
+	ADC_SELECT_ADC7
+	/*TODO complete all options*/
+}ADC_MUX_Channel_Option;
+
+typedef enum{
+	ADC_DEFAULT_DIVISION_2 ,
+	ADC_FACTOR_2,
+	ADC_FACTOR_4,
+	ADC_FACTOR_8,
+	ADC_FACTOR_16,
+	ADC_FACTOR_32,
+	ADC_FACTOR_64,
+	ADC_FACTOR_128
+}ADC_Clock_Division;
+/*--------------------------------------------------*/
+
+
+
+/****************************************************
+ *  		Module macros and configuration         *
+ ****************************************************/
+
+/*--------------------------------------------------*/
+
+
+
+/****************************************************
+ *  			Module macro functions	         	*
+ ****************************************************/
+
+/*--------------------------------------------------*/
+
+
+/****************************************************
+ *				Functions deceleration				*
+ ****************************************************/
+
+/*--------------------------------------------------*/
+
+
+
+
+#endif /* ADC_H_ */

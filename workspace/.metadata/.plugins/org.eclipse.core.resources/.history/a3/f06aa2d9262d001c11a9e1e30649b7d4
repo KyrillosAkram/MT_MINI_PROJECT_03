@@ -1,0 +1,23 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Oct 13, 2021
+ *      Author: Kyrillos
+ */
+
+#include "lcd.h"
+void LCD_init();
+void LCD_sendCommand(LCD_Command_t a_command){
+#if LCD_4BITS_MODE
+	/**/
+#elif LCD_8BITS_MODE
+	/**/
+#endif
+}
+
+void LCD_displayCharacter(char a_char);
+void LCD_displayString(char* a_string);
+void LCD_moveCursorTo(LCD_Display_Position_t a_position);
+void LCD_displayStringRowColumn(char* a_string,LCD_Display_Position_t a_position);
+void LCD_clearScreen();
+void LCD_intgerToString(int8 a_intger,char* a_buffer_ptr);

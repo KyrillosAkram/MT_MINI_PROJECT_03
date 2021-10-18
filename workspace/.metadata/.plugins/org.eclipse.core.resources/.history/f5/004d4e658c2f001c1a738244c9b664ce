@@ -1,0 +1,10 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "lm35_sensor.h"
+#include "lcd.h"

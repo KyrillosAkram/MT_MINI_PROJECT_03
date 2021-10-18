@@ -1,0 +1,46 @@
+/*
+ * keypad.c
+ *
+ *  Created on: Oct 9, 2021
+ *      Author: Kyrillos
+ */
+
+
+#include "keypad.h"
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif
+uint8 KEYPAD_getPressedKey(void){
+	for(uint8 col=0; col<KEYPAD_COL_NUM;col++){
+		/*for easy disconnect power on pins is to make them inputs*/
+		GPIO_setupFirstNPins((uint8)KEYPAD_PORT_ID,((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM)),PIN_INPUT);
+		GPIO_writeFirstNPins((uint8)KEYPAD_PORT_ID,((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM)),);
+		GPIO_setupPinDirection((uint8)KEYPAD_PORT_ID,col,PIN_OUTPUT);
+/*TODO this part need testing and optimize when write first n pins function be ready*/
+#if 0
+#if  ( KEYPAD_BUTTON_PRESSED == LOGIC_HIGH)
+		//GPIO_writePort(KEYPAD_PORT_ID,((GPIO_readPort(KEYPAD_PORT_ID)&(0xFF&(~(1<<((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM)))-1))))|(1<<col));
+		GPIO_writePin(KEYPAD_PORT_ID,col,LOGIC_HIGH);
+#else
+		//GPIO_writePort(KEYPAD_PORT_ID,((GPIO_readPort(KEYPAD_PORT_ID)&(0xFF&(~(1<<((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM)))-1))))&(~(1<<col)));
+		GPIO_writePin(KEYPAD_PORT_ID,col,LOGIC_LOW);
+#endif
+#endif
+		for(uint8 row=KEYPAD_COL_NUM;row<((KEYPAD_COL_NUM)+(KEYPAD_ROW_NUM));row++){
+
+		}
+	}
+}
+
+#if  ( KEYPAD_COL_NUM == 3 && KEYPAD_ROW_NUM==4 )
+/*  */
+#elif( KEYPAD_COL_NUM == 4 && KEYPAD_ROW_NUM==4 )
+/**/
+#else
+#error "no adjustKeyNumber found for used numbers of rows or columns !!! "
+#endif

@@ -1,0 +1,46 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Kyrillos
+ */
+
+#include "std_types.h"
+#include "common_macros.h"
+#include "lm35_sensor.h"
+#include "lcd.h"
+#include "dc_motor.h"
+#include "util/delay.h"
+
+void adjustFanSpeed(void);
+
+uint8 main(){
+	/*	setup section	*/
+	LCD_init();
+	DcMotor_Init();
+	ADC_init(&g_LM35_ADC_Config);
+	char temp_string[5];
+	char fan_string[5];
+	/*------------------*/
+
+	/*super loop section*/
+	loop_for_ever{
+		/* implementation */
+		LM35_getTemperature();
+		adjustFanSpeed();
+		LCD_displayString()
+		_delay_ms(1000);
+
+	}
+	/*------------------*/
+}
+
+
+void adjustFanSpeed(void){
+	if      (g_adcResult < 30 ) DcMotor_Rotate(DC_MOTOR_CW,OFF);
+	else if (g_adcResult >=30 ) DcMotor_Rotate(DC_MOTOR_CW,25 );
+	else if (g_adcResult >=60 ) DcMotor_Rotate(DC_MOTOR_CW,50 );
+	else if (g_adcResult >=90 ) DcMotor_Rotate(DC_MOTOR_CW,75 );
+	else if (g_adcResult >=120) DcMotor_Rotate(DC_MOTOR_CW,100);
+
+}

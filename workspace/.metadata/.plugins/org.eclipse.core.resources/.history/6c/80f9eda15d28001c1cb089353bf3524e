@@ -1,0 +1,21 @@
+/*
+ * File name  : common_macros.h
+ * Description: header file contains common used macro functions
+ * 				and generic for any 8bit register
+ *  Created on: Oct 8, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef COMMON_MACROS_H_
+#define COMMON_MACROS_H_
+
+/*To check if a certain bit is cleared or not in a 8bit register*/
+#define BIT_IS_CLEAR(REG,BIT_NUM) (!(((REG))&(1<<BIT_NUM)));
+
+/*To check if a certain bit is set or not in a 8bit register*/
+#define BIT_IS_SET(REG,BIT_NUM)  ((REG)&(1<<BIT_NUM));
+
+#define ROL(REG,NUM_OF_SHIFT) ((REG)=((REG<<NUM_OF_SHIFT)|(REG>>(8-NUM_OF_SHIFT)))
+
+#define ROR(REG,NUM_OF_SHIFT) ((REG)=((REG>>NUM_OF_SHIFT)|(REG<<(8-NUM_OF_SHIFT))))
+#endif /* COMMON_MACROS_H_ */

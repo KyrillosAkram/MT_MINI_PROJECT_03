@@ -1,0 +1,16 @@
+/*
+ * adc.h
+ *
+ *  Created on: Oct 16, 2021
+ *      Author: Kyrillos
+ */
+
+#ifndef ADC_H_
+#define ADC_H_
+
+#include "common_macros.h"
+#include "std_types.h"
+
+defined(ADC_H_);
+
+#endif /* ADC_H_ */

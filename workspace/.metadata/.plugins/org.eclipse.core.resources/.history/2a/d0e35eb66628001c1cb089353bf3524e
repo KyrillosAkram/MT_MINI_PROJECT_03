@@ -1,0 +1,78 @@
+/*==============================================================
+ * File name  : common_macros.h
+ *
+ * Description: header file contains common used macro functions
+ * 				and static const, generic for any 8bit register
+ *
+ *  Created on: Oct 8, 2021
+ *
+ *      Author: Kyrillos
+ *==============================================================*/
+
+#ifndef COMMON_MACROS_H_
+#define COMMON_MACROS_H_
+#include "asd.h"
+
+/*--------------------------- macro constant ---------------------------*/
+#ifndef TRUE
+	#define TRUE (1u)
+#endif
+
+#ifndef FALSE
+	#define FALSE (0u)
+#endif
+
+#ifndef ON
+	#define ON (1u)
+#endif
+
+#ifndef OFF
+	#define OFF (0u)
+#endif
+
+#ifndef NULL
+	#define NULL ((void*)(0u))
+#endif
+
+#ifndef LOGIC_HIGH
+	#define LOGIC_HIGH (1u)
+#endif
+
+#ifndef LOGIC_LOW
+	#define LOGIC_LOW (0u)
+#endif
+
+/*----------------------------------------------------------------------*/
+
+
+/*----------------------- macro functions ----------------------*/
+
+/*To check if a certain bit is cleared or not in a 8bit register*/
+#ifndef BIT_IS_CLEAR()
+	#define BIT_IS_CLEAR(REG,BIT_NUM) (!(((REG))&(1<<(BIT_NUM))));
+#endif
+
+/*To check if a certain bit is set or not in a 8bit register*/
+#define BIT_IS_SET(REG,BIT_NUM)  ((REG)&(1<<(BIT_NUM)));
+
+/*To make a rotating shift to left*/
+#define RTL(REG,NUM_OF_SHIFT) ((REG)=(((REG)<<(NUM_OF_SHIFT))|((REG)>>(8-(NUM_OF_SHIFT)))));
+
+/*To make a rotating shift to right*/
+#define RTR(REG,NUM_OF_SHIFT) ((REG)=(((REG)>>(NUM_OF_SHIFT))|((REG)<<(8-(NUM_OF_SHIFT)))));
+
+/*To set a certain bit in register */
+#define SET_BIT(REG,BIT_NUM) ((REG)|=(1<<(BIT_NUM)));
+
+/*To set a certain bit in register */
+#define CLEAR_BIT(REG,BIT_NUM) ((REG)&=~(1<<(BIT_NUM)));
+
+/*To toggle a certain bit in given register */
+#define TOGGLE_BIT(REG,BIT_NUM) ((REG)^=(1<<(BIT_NUM)));
+
+/*----------------------------------------------------------------------*/
+
+
+
+
+#endif /* COMMON_MACROS_H_ */
