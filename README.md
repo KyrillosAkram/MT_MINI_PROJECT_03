@@ -7,7 +7,7 @@ This project just implementation
     │   └─ mini_project_03.pdsprj				( require proteus 8          			)
     └─ workspace 						( elcipse workspace directory			)
 		└─ MiniProject3 				( elcipse project directory  			)
-			├─ Debug
+			├─ Debug				( project debuging binary directory		)
 			│  ├─ MiniProject3.elf 			( binary for debuging        			)
 			│  └─ MiniProject3.hex 			( just binary                			)
 			├─ main.c 				( Application code and the entry point		)
